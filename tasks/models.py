@@ -33,6 +33,13 @@ class KSI(BaseModel):
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default="not_started"
     )
+
+    created_by = models.ForeignKey(
+        "users.User", on_delete=models.PROTECT, related_name="ksis_created_by"
+    )
+    updated_by = models.ForeignKey(
+        "users.User", on_delete=models.PROTECT, related_name="ksis_updated_by"
+    )
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -82,6 +89,13 @@ class Milestone(BaseModel):
     weight = models.DecimalField(decimal_places=2, max_digits=10)
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default="not_started"
+    )
+
+    created_by = models.ForeignKey(
+        "users.User", on_delete=models.PROTECT, related_name="milestones_created_by"
+    )
+    updated_by = models.ForeignKey(
+        "users.User", on_delete=models.PROTECT, related_name="milestones_updated_by"
     )
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -136,6 +150,12 @@ class KPI(BaseModel):
     end_date = models.DateField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
 
+    created_by = models.ForeignKey(
+        "users.User", on_delete=models.PROTECT, related_name="kpis_created_by"
+    )
+    updated_by = models.ForeignKey(
+        "users.User", on_delete=models.PROTECT, related_name="kpis_updated_by"
+    )
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -167,6 +187,17 @@ class MajorActivity(BaseModel):
     weight = models.DecimalField(decimal_places=2, max_digits=10)
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default="not_started"
+    )
+
+    created_by = models.ForeignKey(
+        "users.User",
+        on_delete=models.PROTECT,
+        related_name="major_activities_created_by",
+    )
+    updated_by = models.ForeignKey(
+        "users.User",
+        on_delete=models.PROTECT,
+        related_name="major_activities_updated_by",
     )
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -246,6 +277,17 @@ class Task(BaseModel):
     )
     other_challenge = models.TextField(null=True, blank=True)
     link = models.URLField(max_length=2048, blank=True, null=True)
+
+    created_by = models.ForeignKey(
+        "users.User",
+        on_delete=models.PROTECT,
+        related_name="tasks_created_by",
+    )
+    updated_by = models.ForeignKey(
+        "users.User",
+        on_delete=models.PROTECT,
+        related_name="tasks_updated_by",
+    )
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 

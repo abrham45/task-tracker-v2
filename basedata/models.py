@@ -9,6 +9,17 @@ class ChallengeType(BaseModel):
         max_length=50, validators=[MinLengthValidator(2)], unique=True
     )
     challenge_type_description = models.TextField(blank=True, null=True)
+
+    created_by = models.ForeignKey(
+        "users.User",
+        on_delete=models.PROTECT,
+        related_name="challenge_types_created_by",
+    )
+    updated_by = models.ForeignKey(
+        "users.User",
+        on_delete=models.PROTECT,
+        related_name="challenge_types_updated_by",
+    )
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -32,6 +43,16 @@ class ChallengeGroup(BaseModel):
     )
     challenge_group_description = models.TextField(blank=True, null=True)
 
+    created_by = models.ForeignKey(
+        "users.User",
+        on_delete=models.PROTECT,
+        related_name="challenge_groups_created_by",
+    )
+    updated_by = models.ForeignKey(
+        "users.User",
+        on_delete=models.PROTECT,
+        related_name="challenge_groups_updated_by",
+    )
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -49,6 +70,13 @@ class Department(BaseModel):
         max_length=50, validators=[MinLengthValidator(2)], unique=True
     )
     department_description = models.TextField(blank=True, null=True)
+
+    created_by = models.ForeignKey(
+        "users.User", on_delete=models.PROTECT, related_name="departments_created_by"
+    )
+    updated_by = models.ForeignKey(
+        "users.User", on_delete=models.PROTECT, related_name="departments_updated_by"
+    )
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -64,6 +92,13 @@ class Position(BaseModel):
         max_length=50, validators=[MinLengthValidator(2)], unique=True
     )
     position_description = models.TextField(blank=True, null=True)
+
+    created_by = models.ForeignKey(
+        "users.User", on_delete=models.PROTECT, related_name="positions_created_by"
+    )
+    updated_by = models.ForeignKey(
+        "users.User", on_delete=models.PROTECT, related_name="positions_updated_by"
+    )
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
