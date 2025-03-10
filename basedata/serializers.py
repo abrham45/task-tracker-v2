@@ -28,10 +28,14 @@ class ChallengeTypeSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "description",
+            "created_by",
+            "updated_by",
             "created_date",
             "updated_date",
         ]
         read_only_fields = [
+            "created_by",
+            "updated_by",
             "created_date",
             "updated_date",
         ]
@@ -56,6 +60,8 @@ class ChallengeTypeBasicSerializer(ChallengeTypeSerializer):
                     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                     "name": "string",
                 },
+                "created_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "updated_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                 "created_date": "2025-02-23T16:11:30.797Z",
                 "updated_date": "2025-02-23T16:11:30.797Z",
             },
@@ -83,10 +89,14 @@ class ChallengeGroupSerializer(serializers.ModelSerializer):
             "challenge_type",
             "name",
             "description",
+            "created_by",
+            "updated_by",
             "created_date",
             "updated_date",
         ]
         read_only_fields = [
+            "created_by",
+            "updated_by",
             "created_date",
             "updated_date",
         ]
@@ -124,10 +134,14 @@ class DepartmentSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "description",
+            "created_by",
+            "updated_by",
             "created_date",
             "updated_date",
         ]
         read_only_fields = [
+            "created_by",
+            "updated_by",
             "created_date",
             "updated_date",
         ]
@@ -152,6 +166,8 @@ class DepartmentBasicSerializer(DepartmentSerializer):
                     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                     "name": "string",
                 },
+                "created_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "updated_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                 "created_date": "2025-02-23T16:11:30.797Z",
                 "updated_date": "2025-02-23T16:11:30.797Z",
             },
@@ -176,10 +192,14 @@ class PositionSerializer(serializers.ModelSerializer):
             "name",
             "description",
             "department",
+            "created_by",
+            "updated_by",
             "created_date",
             "updated_date",
         ]
         read_only_fields = [
+            "created_by",
+            "updated_by",
             "created_date",
             "updated_date",
         ]

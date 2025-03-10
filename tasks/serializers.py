@@ -65,6 +65,8 @@ User = get_user_model()
                 "status": "not_started",
                 "created_date": "2025-02-23T12:33:07.680Z",
                 "updated_date": "2025-02-23T12:33:07.680Z",
+                "created_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "updated_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
             },
             response_only=True,
         )
@@ -89,11 +91,15 @@ class KSISerializer(serializers.ModelSerializer):
             "status",
             "created_date",
             "updated_date",
+            "created_by",
+            "updated_by",
         ]
         read_only_fields = [
             "department",
             "created_date",
             "updated_date",
+            "created_by",
+            "updated_by",
         ]
 
     def validate_end_date(self, value):
@@ -133,6 +139,8 @@ class KSISerializer(serializers.ModelSerializer):
                 "status": "not_started",
                 "created_date": "2025-02-23T21:41:03.198Z",
                 "updated_date": "2025-02-23T21:41:03.198Z",
+                "created_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "updated_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
             },
             response_only=True,
         )
@@ -162,8 +170,10 @@ class MilestoneSerializer(serializers.ModelSerializer):
             "status",
             "created_date",
             "updated_date",
+            "created_by",
+            "updated_by",
         ]
-        read_only_fields = ["created_date", "updated_date"]
+        read_only_fields = ["created_date", "updated_date", "created_by", "updated_by"]
 
     def validate_start_date(self, value):
         ksi = self.initial_data.get("ksi", None)
@@ -261,6 +271,8 @@ class MilestoneSerializer(serializers.ModelSerializer):
                 "start_date": "2025-02-23",
                 "end_date": "2025-02-23",
                 "status": "pending",
+                "created_date": "2025-02-23T21:41:03.198Z",
+                "updated_date": "2025-02-23T21:41:03.198Z",
                 "created_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                 "updated_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
             },
@@ -287,8 +299,10 @@ class KPISerializer(serializers.ModelSerializer):
             "status",
             "created_date",
             "updated_date",
+            "created_by",
+            "updated_by",
         ]
-        read_only_fields = ["created_date", "updated_date"]
+        read_only_fields = ["created_date", "updated_date", "created_by", "updated_by"]
 
     def validate_start_date(self, value):
         milestone = self.initial_data.get("milestone", None)
@@ -378,6 +392,8 @@ class KSIBasicSerializer(KSISerializer):
                 "status": "not_started",
                 "created_date": "2025-02-23T21:47:47.792Z",
                 "updated_date": "2025-02-23T21:47:47.792Z",
+                "created_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "updated_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
             },
             response_only=True,
         )
@@ -411,8 +427,10 @@ class MajorActivitySerializer(serializers.ModelSerializer):
             "status",
             "created_date",
             "updated_date",
+            "created_by",
+            "updated_by",
         ]
-        read_only_fields = ["created_date", "updated_date"]
+        read_only_fields = ["created_date", "updated_date", "created_by", "updated_by"]
 
     def validate_start_date(self, value):
         kpi = self.initial_data.get("kpi", None)
@@ -592,6 +610,8 @@ class MajorActivitySerializer(serializers.ModelSerializer):
                         "link": "string",
                         "created_date": "2025-02-23T21:49:42.393Z",
                         "updated_date": "2025-02-23T21:49:42.393Z",
+                        "created_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "updated_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                     }
                 ],
                 "challenge_groups": [
@@ -608,6 +628,8 @@ class MajorActivitySerializer(serializers.ModelSerializer):
                 "link": "string",
                 "created_date": "2025-02-23T21:49:42.393Z",
                 "updated_date": "2025-02-23T21:49:42.393Z",
+                "created_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "updated_by": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
             },
             response_only=True,
         )
@@ -665,12 +687,16 @@ class TaskSerializer(serializers.ModelSerializer):
             "link",
             "created_date",
             "updated_date",
+            "created_by",
+            "updated_by",
         ]
         read_only_fields = [
             "sub_tasks",
             "positions",
             "created_date",
             "updated_date",
+            "created_by",
+            "updated_by",
         ]
 
     def get_sub_tasks(self, obj):
