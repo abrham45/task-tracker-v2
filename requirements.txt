@@ -32,7 +32,7 @@ oauthlib
 packaging
 phonenumbers
 pillow
-#psycopg2-binary
+psycopg2-binary
 pycparser
 pycryptodome
 PyJWT
