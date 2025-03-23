@@ -146,9 +146,10 @@ class KPI(BaseModel):
     )
     kpi_name = models.CharField(max_length=255)
     kpi_description = models.TextField(null=True, blank=True)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
+    planed_kpi= models.IntegerField(default=1)
 
     created_by = models.ForeignKey(
         "users.User", on_delete=models.PROTECT, related_name="kpis_created_by"
