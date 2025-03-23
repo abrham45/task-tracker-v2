@@ -179,17 +179,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CORS_ALLOWED_ORIGINS = tuple(env.list("CORS_ALLOWED_ORIGINS"))
 CSRF_TRUSTED_ORIGINS = tuple(env.list("CSRF_TRUSTED_ORIGINS"))
 
-THROTTLE_RATES = {
-    "anon": env.str("THROTTLE_ANON_RATE", "100/day"),
-    "user": env.str("THROTTLE_USER_RATE", "1000/day"),
-}
+
+THROTTLE_RATES = {}
+
 
 REST_FRAMEWORK = {
     # Throttling settings
-    "DEFAULT_THROTTLE_CLASSES": [
-        "rest_framework.throttling.AnonRateThrottle",
-        "rest_framework.throttling.UserRateThrottle",
-    ],
+    "DEFAULT_THROTTLE_CLASSES": [],
     "DEFAULT_THROTTLE_RATES": THROTTLE_RATES,
     # Pagination settings
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
@@ -264,7 +260,7 @@ DJOSER = {
         "user_create": "users.serializers.UserCreateSerializer",
     },
     "SEND_ACTIVATION_EMAIL": True,
-    "ACTIVATION_URL": f"{FRONTEND_DOMAIN}/activate/{{uid}}/{{token}}/",
+    "ACTIVATION_URL": f"activate/{{uid}}/{{token}}",
     "PASSWORD_RESET_CONFIRM_URL": (
         f"{FRONTEND_DOMAIN}/password/reset/confirm/{{uid}}/{{token}}/"
     ),
@@ -287,6 +283,7 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
 )
 
+DOMAIN = 'task.icogacc.com'
 AXES_ENABLED = env.bool("ACCOUNT_LOCKOUT_ENABLED", True)
 AXES_FAILURE_LIMIT = 5
 AXES_COOLOFF_TIME = timedelta(minutes=30)
